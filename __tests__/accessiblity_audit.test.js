@@ -14,6 +14,7 @@ async function audit (page) {
     .include('body')
     .exclude('#app-site-search__input') // axe reports there is "no label associated with the text field", when there is one.
     .exclude('.app-phase-banner') // axe reports that the phase banner is not inside a landmark, which is intentional.
+    .exclude('.app-back-to-top__link') // axe gets confused by our use of #top without top being defined in the doc
 
   const results = await axe.analyze()
 
